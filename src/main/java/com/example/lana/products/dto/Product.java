@@ -1,8 +1,10 @@
 package com.example.lana.products.dto;
 
 import lombok.Getter;
+import javax.persistence.Table;
 
 @Getter
+@Table(name = "products")
 public enum Product {
 
     PEN("Lana Pen", 5.00),

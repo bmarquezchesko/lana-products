@@ -1,8 +1,9 @@
 package com.example.lana.products.repository;
 
 import com.example.lana.products.dto.Basket;
+import org.springframework.data.repository.CrudRepository;
 
-public interface BasketRepository {
+public interface BasketRepository extends CrudRepository<Basket, Long> {
 
-    Basket create();
+    Basket save(Basket basket);
 }

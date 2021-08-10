@@ -14,6 +14,8 @@ public class DefaultBasketService implements BasketService {
 
     @Override
     public Basket createBasket() {
-        return basketRepository.create();
+        Basket basket = new Basket();
+
+        return basketRepository.save(basket);
     }
 }
