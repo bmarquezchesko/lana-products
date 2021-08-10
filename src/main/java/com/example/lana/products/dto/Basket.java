@@ -1,14 +1,13 @@
 package com.example.lana.products.dto;
 
-import lombok.Getter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
 
-@Getter
+@Data
 @Entity
-@Table(name = "baskets")
 public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

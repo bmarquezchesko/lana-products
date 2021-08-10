@@ -1,10 +1,10 @@
 package com.example.lana.products.dto;
 
-import lombok.Getter;
-import javax.persistence.Table;
+import lombok.*;
 
 @Getter
-@Table(name = "products")
+@ToString
+@AllArgsConstructor
 public enum Product {
 
     PEN("Lana Pen", 5.00),
@@ -14,8 +14,4 @@ public enum Product {
     private final String name;
     private final Double price;
 
-    Product(String name, Double price) {
-        this.name = name;
-        this.price = price;
-    }
 }
