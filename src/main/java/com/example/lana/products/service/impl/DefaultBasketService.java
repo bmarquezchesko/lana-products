@@ -6,6 +6,8 @@ import com.example.lana.products.service.BasketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DefaultBasketService implements BasketService {
@@ -18,4 +20,10 @@ public class DefaultBasketService implements BasketService {
 
         return basketRepository.save(basket);
     }
+
+    @Override
+    public List<Basket> getAll() {
+        return basketRepository.findAll();
+    }
+
 }
