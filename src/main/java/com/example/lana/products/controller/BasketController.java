@@ -64,4 +64,15 @@ public class BasketController {
 
         return new ResponseEntity(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{basketId}")
+    public ResponseEntity<Object> removeBasket(@PathVariable Long basketId){
+        log.info("### DELETE request to remove basket by id - Endpoint /baskets/{} ###", basketId);
+
+        basketService.removeBasket(basketId);
+
+        log.info("### Finish DELETE request to remove basket with id {}} ###", basketId);
+
+        return ResponseEntity.ok("Basket deleted successfully!");
+    }
 }

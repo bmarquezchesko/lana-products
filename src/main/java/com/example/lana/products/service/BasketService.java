@@ -13,6 +13,8 @@ public interface BasketService {
 
     Double getTotalAmount(Long basketId);
 
+    void removeBasket(Long basketId);
+
     List<Basket> getAll();
 
 }

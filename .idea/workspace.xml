@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/request/AddProductRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/response/TotalAmountResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/controller/BasketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/controller/BasketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Basket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Basket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/repository/BasketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/repository/BasketRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/BasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/BasketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/controller/BasketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/controller/BasketController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Basket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Basket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Product.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/repository/BasketRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/repository/BasketRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/BasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/BasketService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +76,8 @@
       <option name="presentableId" value="Default" />
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
-      <workItem from="1628512954614" duration="13273000" />
+      <workItem from="1628512954614" duration="14413000" />
+      <workItem from="1628640633699" duration="1528000" />
     </task>
     <servers />
   </component>
@@ -102,5 +94,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -38,7 +38,6 @@ public class DefaultBasketService implements BasketService {
 
     @Override
     public Double getTotalAmount(Long basketId) {
-
         Optional<Basket> basket = basketRepository.findById(basketId);
 
         Double totalAmount = basket.isPresent()
@@ -46,6 +45,11 @@ public class DefaultBasketService implements BasketService {
                 : 0.0;
 
         return totalAmount;
+    }
+
+    @Override
+    public void removeBasket(Long basketId) {
+        basketRepository.deleteById(basketId);
     }
 
     @Override
