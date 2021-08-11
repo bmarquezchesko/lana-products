@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/TotalDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/exception/BasketNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DiscountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/BulkDiscountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/NoDiscountsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/TwoForOneDiscountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/controller/BasketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/controller/BasketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/repository/BasketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/repository/BasketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/response/TotalAmountResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/BasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/BasketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/controller/BasketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/controller/BasketController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/repository/BasketRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/repository/BasketRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/response/TotalAmountResponse.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/BasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/BasketService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" afterDir="false" />
     </list>
@@ -30,6 +36,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1wTIy9py6O3TkGhZAmCpISS6psb" />
   <component name="ProjectViewState">
@@ -77,7 +91,7 @@
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
       <workItem from="1628512954614" duration="14413000" />
-      <workItem from="1628640633699" duration="1528000" />
+      <workItem from="1628640633699" duration="12452000" />
     </task>
     <servers />
   </component>
@@ -95,5 +109,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/NoDiscountsService.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

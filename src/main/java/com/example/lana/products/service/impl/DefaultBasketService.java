@@ -2,19 +2,24 @@ package com.example.lana.products.service.impl;
 
 import com.example.lana.products.dto.Basket;
 import com.example.lana.products.dto.Product;
+import com.example.lana.products.dto.TotalDetail;
+import com.example.lana.products.exception.BasketNotFoundException;
 import com.example.lana.products.repository.BasketRepository;
 import com.example.lana.products.service.BasketService;
+import com.example.lana.products.service.DiscountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class DefaultBasketService implements BasketService {
 
     private final BasketRepository basketRepository;
+    private final BulkDiscountService bulkDiscountService;
+    private final TwoForOneDiscountService twoForOneDiscountService;
+    private final NoDiscountsService noDiscountsService;
 
     @Override
     public Basket createBasket() {
@@ -29,7 +34,6 @@ public class DefaultBasketService implements BasketService {
 
         if(basket.isPresent()){
             basket.get().getProducts().add(product);
-
             basketRepository.save(basket.get());
         }
 
@@ -37,14 +41,25 @@ public class DefaultBasketService implements BasketService {
     }
 
     @Override
-    public Double getTotalAmount(Long basketId) {
+    public TotalDetail getTotalDetail(Long basketId) {
         Optional<Basket> basket = basketRepository.findById(basketId);
 
-        Double totalAmount = basket.isPresent()
-                ? basket.get().getProducts().stream().mapToDouble(product -> product.getPrice()).sum()
-                : 0.0;
+        if (basket.isEmpty()) {
+            throw new BasketNotFoundException(String.format("The basket with ID %d does not exists", basketId));
+        }
 
-        return totalAmount;
+        List<Product> products = basket.get().getProducts();
+
+        Double totalWithDiscount = Arrays.stream(Product.values())
+                .filter(p -> products.contains(p))
+                .mapToDouble(p -> mapOfImplementations().get(p).calculateTotalWithDiscount(products, p))
+                .sum();
+
+        TotalDetail totalDetail = new TotalDetail()
+                .setProducts(products)
+                .setTotal(totalWithDiscount);
+
+        return totalDetail;
     }
 
     @Override
@@ -57,4 +72,11 @@ public class DefaultBasketService implements BasketService {
         return basketRepository.findAll();
     }
 
+    private Map<Product, DiscountService> mapOfImplementations() {
+        return Map.of(
+                Product.PEN, twoForOneDiscountService,
+                Product.TSHIRT, bulkDiscountService,
+                Product.MUG, noDiscountsService
+        );
+    }
 }

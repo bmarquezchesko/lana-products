@@ -2,6 +2,7 @@ package com.example.lana.products.service;
 
 import com.example.lana.products.dto.Basket;
 import com.example.lana.products.dto.Product;
+import com.example.lana.products.dto.TotalDetail;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface BasketService {
 
     Basket addProduct(Long basketId, Product product);
 
-    Double getTotalAmount(Long basketId);
+    TotalDetail getTotalDetail(Long basketId);
 
     void removeBasket(Long basketId);
 

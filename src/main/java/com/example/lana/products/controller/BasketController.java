@@ -1,8 +1,8 @@
 package com.example.lana.products.controller;
 
 import com.example.lana.products.dto.Basket;
+import com.example.lana.products.dto.TotalDetail;
 import com.example.lana.products.request.AddProductRequest;
-import com.example.lana.products.response.TotalAmountResponse;
 import com.example.lana.products.service.BasketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,24 +43,13 @@ public class BasketController {
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
-    @GetMapping("/{basketId}/total")
-    public ResponseEntity<TotalAmountResponse> getTotalAmount(@PathVariable Long basketId){
-        log.info("### GET request to obtain total amount from a basket  - Endpoint /baskets/{}/total ###", basketId);
+    @GetMapping("/{basketId}/total_detail")
+    public ResponseEntity<TotalDetail> getTotalDetail(@PathVariable Long basketId){
+        log.info("### GET request to obtain total detail from a basket  - Endpoint /baskets/{}/total ###", basketId);
 
-        TotalAmountResponse response = new TotalAmountResponse(basketService.getTotalAmount(basketId));
+        TotalDetail response = basketService.getTotalDetail(basketId);
 
-        log.info("### Finish GET request to obtain total amount from a basket: {} ### ", response);
-
-        return new ResponseEntity(response, HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Basket>> getAllBaskets(){
-        log.info("### GET request to obtain all baskets - Endpoint /basket/all was invoked ###");
-
-        List<Basket> response = basketService.getAll();
-
-        log.info("### Finish GET request to obtain all baskets {}} ###", response);
+        log.info("### Finish GET request to obtain total detail from a basket: {} ### ", response);
 
         return new ResponseEntity(response, HttpStatus.OK);
     }
@@ -74,5 +63,16 @@ public class BasketController {
         log.info("### Finish DELETE request to remove basket with id {}} ###", basketId);
 
         return ResponseEntity.ok("Basket deleted successfully!");
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Basket>> getAllBaskets(){
+        log.info("### GET request to obtain all baskets - Endpoint /basket/all was invoked ###");
+
+        List<Basket> response = basketService.getAll();
+
+        log.info("### Finish GET request to obtain all baskets {}} ###", response);
+
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 }
