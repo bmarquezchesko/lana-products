@@ -13,7 +13,7 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated
+    @Enumerated(value = EnumType.STRING)
     @ElementCollection(targetClass = Product.class, fetch = FetchType.EAGER)
     private List<Product> products = Collections.emptyList();
 }

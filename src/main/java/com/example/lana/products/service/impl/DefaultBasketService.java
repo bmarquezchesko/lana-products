@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -29,15 +31,17 @@ public class DefaultBasketService implements BasketService {
     }
 
     @Override
-    public Basket addProduct(Long basketId, Product product) {
+    public Basket addProduct(Long basketId, Product product, Long quantity) {
         Optional<Basket> basket = basketRepository.findById(basketId);
 
-        if(basket.isPresent()){
-            basket.get().getProducts().add(product);
-            basketRepository.save(basket.get());
+        if (basket.isEmpty()) {
+            throw new BasketNotFoundException(String.format("The basket with ID %d does not exist", basketId));
         }
 
-        return basket.get();
+        IntStream.range(0, quantity.intValue())
+                .forEach(x -> basket.get().getProducts().add(product));
+
+        return basketRepository.save(basket.get());
     }
 
     @Override
@@ -45,21 +49,18 @@ public class DefaultBasketService implements BasketService {
         Optional<Basket> basket = basketRepository.findById(basketId);
 
         if (basket.isEmpty()) {
-            throw new BasketNotFoundException(String.format("The basket with ID %d does not exists", basketId));
+            throw new BasketNotFoundException(String.format("The basket with ID %d does not exist", basketId));
         }
 
         List<Product> products = basket.get().getProducts();
-
         Double totalWithDiscount = Arrays.stream(Product.values())
                 .filter(p -> products.contains(p))
                 .mapToDouble(p -> mapOfImplementations().get(p).calculateTotalWithDiscount(products, p))
                 .sum();
 
-        TotalDetail totalDetail = new TotalDetail()
+        return new TotalDetail()
                 .setProducts(products)
                 .setTotal(totalWithDiscount);
-
-        return totalDetail;
     }
 
     @Override

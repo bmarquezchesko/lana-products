@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,10 +34,10 @@ public class BasketController {
 
     @PatchMapping("/{basketId}")
     public ResponseEntity<Basket> addProduct(@PathVariable Long basketId,
-                                             @RequestBody AddProductRequest request){
+                                             @Valid @RequestBody AddProductRequest request){
         log.info("### PATCH request to add product - Endpoint /baskets/{} was invoked with request {} ###", basketId, request);
 
-        Basket response = basketService.addProduct(basketId, request.getProduct());
+        Basket response = basketService.addProduct(basketId, request.getProduct(), request.getQuantity());
 
         log.info("### Finish PATCH request to add product to basket: {} ### ", response);
 

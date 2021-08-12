@@ -10,7 +10,7 @@ public interface BasketService {
 
     Basket createBasket();
 
-    Basket addProduct(Long basketId, Product product);
+    Basket addProduct(Long basketId, Product product, Long quantity);
 
     TotalDetail getTotalDetail(Long basketId);
 
