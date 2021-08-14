@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="" />
+    <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/service/impl/BulkDiscountServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/service/impl/DefaultBasketServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/service/impl/NoDiscountsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/service/impl/TwoForOneDiscountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Basket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/Basket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/BulkDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/BulkDiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/DefaultBasketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/NoDiscountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/NoDiscountsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/TwoForOneDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/TwoForOneDiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Basket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/dto/Basket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/DiscountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/DiscountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/BulkDiscountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/BulkDiscountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/DefaultBasketService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/NoDiscountsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/NoDiscountsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/TwoForOneDiscountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/impl/TwoForOneDiscountService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +33,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -43,13 +62,93 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Spring Boot.LanaProductsApplication (1)">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.lana.products.service.impl" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in lana-products">
+    <configuration name="All in lana-products" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoDiscountsServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.service.impl.NoDiscountsServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoDiscountsServiceTest.test2x1DiscountWith5ProductShouldApplyDiscount100PercentToTwoProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.service.impl.NoDiscountsServiceTest" />
+      <option name="METHOD_NAME" value="test2x1DiscountWith5ProductShouldApplyDiscount100PercentToTwoProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwoForOneDiscountServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.service.impl.TwoForOneDiscountServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwoForOneDiscountServiceTest.test2x1DiscountWith1ProductShouldNotApplyDiscount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.service.impl.TwoForOneDiscountServiceTest" />
+      <option name="METHOD_NAME" value="test2x1DiscountWith1ProductShouldNotApplyDiscount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LanaProductsApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="lana-products" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.lana.products.LanaProductsApplication" />
@@ -64,6 +163,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in lana-products" />
+        <item itemvalue="JUnit.NoDiscountsServiceTest" />
+        <item itemvalue="JUnit.NoDiscountsServiceTest.test2x1DiscountWith5ProductShouldApplyDiscount100PercentToTwoProducts" />
+        <item itemvalue="JUnit.TwoForOneDiscountServiceTest" />
+        <item itemvalue="JUnit.TwoForOneDiscountServiceTest.test2x1DiscountWith1ProductShouldNotApplyDiscount" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,7 +183,7 @@
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
       <workItem from="1628512954614" duration="14413000" />
-      <workItem from="1628640633699" duration="22379000" />
+      <workItem from="1628640633699" duration="40470000" />
     </task>
     <servers />
   </component>
@@ -97,12 +205,14 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/lana/products/service/impl/NoDiscountsService.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/lana_products$All_in_lana_products.ic" NAME="All in lana-products Coverage Results" MODIFIED="1628965884878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

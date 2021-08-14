@@ -1,6 +1,7 @@
 package com.example.lana.products.dto;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Accessors(chain = true)
 public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

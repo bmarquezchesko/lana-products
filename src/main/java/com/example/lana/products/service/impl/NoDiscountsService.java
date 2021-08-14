@@ -10,7 +10,7 @@ import java.util.List;
 public class NoDiscountsService implements DiscountService {
 
     @Override
-    public Double calculateTotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
+    public Double getSubtotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
 
         return products.stream()
                 .filter(p -> p.equals(productToApplyDiscount))

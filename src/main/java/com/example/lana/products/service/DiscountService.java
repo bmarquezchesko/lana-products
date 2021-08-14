@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiscountService {
 
-    Double calculateTotalWithDiscount(List<Product> products, Product productToApplyDiscount);
+    Double getSubtotalWithDiscount(List<Product> products, Product productToApplyDiscount);
 }

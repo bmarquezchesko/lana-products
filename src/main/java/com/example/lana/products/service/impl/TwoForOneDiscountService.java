@@ -10,7 +10,7 @@ import java.util.List;
 public class TwoForOneDiscountService implements DiscountService {
 
     @Override
-    public Double calculateTotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
+    public Double getSubtotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
         Long productOccurrences = products.stream()
                 .filter(p -> p.equals(productToApplyDiscount))
                 .count();

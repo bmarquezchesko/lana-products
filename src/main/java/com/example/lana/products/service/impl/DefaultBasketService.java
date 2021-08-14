@@ -31,16 +31,23 @@ public class DefaultBasketService implements BasketService {
 
     @Override
     public Basket addProduct(Long basketId, Product product, Long quantity) {
-        Optional<Basket> basket = basketRepository.findById(basketId);
+        Optional<Basket> basketOpt = basketRepository.findById(basketId);
 
-        if (basket.isEmpty()) {
+        if (basketOpt.isEmpty()) {
             throw new BasketNotFoundException(String.format("The basket with ID %d does not exist", basketId));
         }
 
-        IntStream.range(0, quantity.intValue())
-                .forEach(x -> basket.get().getProducts().add(product));
+        Basket basket = basketOpt.get();
+        basket.setProducts(updateProductList(product, quantity, basket.getProducts()));
 
-        return basketRepository.save(basket.get());
+        return basketRepository.save(basket);
+    }
+
+    private List<Product> updateProductList(Product product, Long quantity, List<Product> products) {
+        List<Product> productsUpdated = new ArrayList<>(products);
+        IntStream.range(0, quantity.intValue())
+                .forEach(x -> productsUpdated.add(product));
+        return productsUpdated;
     }
 
     @Override
@@ -54,7 +61,7 @@ public class DefaultBasketService implements BasketService {
         List<Product> products = basket.get().getProducts();
         Double totalWithDiscount = Arrays.stream(Product.values())
                 .filter(p -> products.contains(p))
-                .mapToDouble(p -> mapOfImplementations().get(p).calculateTotalWithDiscount(products, p))
+                .mapToDouble(p -> mapOfImplementations().get(p).getSubtotalWithDiscount(products, p))
                 .sum();
 
         return new TotalDetail()

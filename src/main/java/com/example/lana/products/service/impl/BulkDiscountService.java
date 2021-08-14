@@ -14,7 +14,7 @@ public class BulkDiscountService implements DiscountService {
     private static final Long MINIMUM_TO_DISCOUNT = 3L;
 
     @Override
-    public Double calculateTotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
+    public Double getSubtotalWithDiscount(List<Product> products, Product productToApplyDiscount) {
         Long productOccurrences = products.stream()
                 .filter(p -> p.equals(productToApplyDiscount))
                 .count();
