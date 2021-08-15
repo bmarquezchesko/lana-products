@@ -2,8 +2,8 @@
 ![technology Java](https://img.shields.io/badge/technology-java-blue.svg)
 ![tag jdk11](https://img.shields.io/badge/tag-jdk11-orange.svg)
 
-Lana API expose services to create, read, update and delete Baskets.
-In addition, you could add Lana-Product to a basket:
+Lana API expose services to buy awesome Lana merchandising from a physical store 
+that sells the following 3 products:
 
 ```
 Code         | Name              |  Price
@@ -12,6 +12,13 @@ PEN          | Lana Pen          |   5.00€
 TSHIRT       | Lana T-Shirt      |  20.00€
 MUG          | Lana Coffee Mug   |   7.50€
 ```
+
+With this fantastic API you will be able the following operations:
+- Create a new checkout basket
+- Add a product to a basket
+- Get the total amount in a basket
+- Remove the basket
+- Get all baskets already created.
 
 You could access to some specific discounts like:
 - **2x1 Promotion in PENs** 
@@ -27,13 +34,13 @@ First, you must clone project from git-hub, then you should go to project root d
 and execute next command in console `mvn clean install` to build project.
 
 * Running in `LOCAL ENVIRONMENT`:
-You could execute application in local environment with command `mvn spring-boot:run` and enjoy it :smile:
+You could execute application in local environment with command `mvn spring-boot:run` and enjoy it :smile: .
 The application will execute in port `8080` from `localhost`.
 
 
 * Running in `DOCKER ENVIRONMENT`:
-In other hand, you can choose run application in docker environment with command `sudo docker build --tag=lana-products:1.0 .` 
-and then execute `sudo docker run -d -p 8090:8080 -t lana-products:1.0`.
+On the other hand, you can choose run application in docker environment with command 
+`sudo docker build --tag=lana-products:1.0 .` and then execute `sudo docker run -d -p 8090:8080 -t lana-products:1.0`.
 The application will execute in port `8090` from `localhost`.
 
 Once the application is running you could see Baskets store in a memory database (**H2**).
@@ -59,6 +66,8 @@ However, you could execute requests in console:
 
 ### Create a new Basket
 
+You are allowed to create new baskets executing next request:
+
 ```
 curl --request POST 'http://localhost:8080/lana-api/baskets'
 ```
@@ -74,6 +83,8 @@ curl --request POST 'http://localhost:8080/lana-api/baskets'
 
 ### Add product to Basket
 
+Also, it is possible to incorporate Products to a basket pre-existing indicating quantity that you want to add, only executing next request:
+
 **IMPORTANT:**
 - Fields `"product"` and `"quantity"` are mandatory.
 - `"product"` must be `PEN`,`TSHIRT` or `MUG`. 
@@ -82,10 +93,7 @@ curl --request POST 'http://localhost:8080/lana-api/baskets'
 ```
 curl --request PATCH 'http://localhost:8080/lana-api/baskets/1' \
 --header "Content-Type:application/json" \
---data-raw '{
-"product": "PEN",
-"quantity": 5
-}'
+--data-raw '{ "product": "PEN", "quantity": 5 }'
 ```
 
 #### Success Response
@@ -115,6 +123,7 @@ curl --request PATCH 'http://localhost:8080/lana-api/baskets/1' \
 }
 ```
 ### GET Total Detail by Basket ID
+This request will allow you to visualize products chosen in a Basket and its total amount with discounts applied.
 ```
 curl --request GET 'http://localhost:8080/lana-api/baskets/1/total_detail'
 ```
@@ -146,6 +155,7 @@ curl --request GET 'http://localhost:8080/lana-api/baskets/1/total_detail'
 ```
 
 ### DELETE a Basket by ID
+However, if you aren't happy with your basket, you could delete with the following request:
 ```
 curl --request DELETE 'http://localhost:8080/lana-api/baskets/1'
 ```
@@ -162,13 +172,13 @@ Basket deleted successfully!
 ```json
 {
   "error": "Basket Not Found Exception",
-  "message": "The basket with ID %d does not exist",
+  "message": "The basket with ID 7 does not exist",
   "status": 404
 }
 ```
 
 ### GET All Baskets
-
+Finally, you could request all basket already created.
 ```
 curl --request GET 'http://localhost:8080/lana-api/baskets'
 ```
@@ -201,6 +211,9 @@ curl --request GET 'http://localhost:8080/lana-api/baskets'
     ]
 }
 ```
+
+## Integration and Unit Test
+You be able to run integration and unit tests executing command `mvn clean test`.
 
 ## Questions
 * [braianmarquez89@gmail.com](mailto:braianmarquez89@gmail.com)

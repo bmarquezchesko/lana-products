@@ -74,7 +74,6 @@ public class DefaultBasketService implements BasketService {
             basketRepository.deleteById(basketId);
         } catch (EmptyResultDataAccessException ex) {
             throw new BasketNotFoundException(String.format("The basket with ID %d does not exist", basketId));
-
         }
     }
 

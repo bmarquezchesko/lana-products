@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DefaultBasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DefaultBasketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lana-products-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/lana-products-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.LanaProductsApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.LanaProductsApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.integration.controller.BasketControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.integration.controller.BasketControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.BulkDiscountServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.BulkDiscountServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.DefaultBasketServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.DefaultBasketServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.NoDiscountsServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.NoDiscountsServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.TwoForOneDiscountServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.lana.products.unit.service.TwoForOneDiscountServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.LanaProductsApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.LanaProductsApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.integration.controller.BasketControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.integration.controller.BasketControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.DefaultBasketServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.DefaultBasketServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.NoDiscountsServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.NoDiscountsServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.TwoForOneDiscountServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.lana.products.unit.service.TwoForOneDiscountServiceTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +82,7 @@
       <recent name="com.example.lana.products.service.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in lana-products">
+  <component name="RunManager" selected="Spring Boot.LanaProductsApplication (1)">
     <configuration name="All in lana-products" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lana-products" />
       <option name="PACKAGE_NAME" value="" />
@@ -174,7 +188,7 @@
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
       <workItem from="1628512954614" duration="14413000" />
-      <workItem from="1628640633699" duration="75583000" />
+      <workItem from="1628640633699" duration="78035000" />
     </task>
     <servers />
   </component>
