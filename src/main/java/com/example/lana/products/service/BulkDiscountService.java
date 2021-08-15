@@ -1,7 +1,6 @@
-package com.example.lana.products.service.impl;
+package com.example.lana.products.service;
 
 import com.example.lana.products.dto.Product;
-import com.example.lana.products.service.DiscountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

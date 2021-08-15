@@ -1,10 +1,14 @@
-package com.example.lana.products.service.impl;
+package com.example.lana.products.unit.service;
 
 import com.example.lana.products.dto.Basket;
 import com.example.lana.products.dto.Product;
 import com.example.lana.products.dto.TotalDetail;
 import com.example.lana.products.exception.BasketNotFoundException;
 import com.example.lana.products.repository.BasketRepository;
+import com.example.lana.products.service.BulkDiscountService;
+import com.example.lana.products.service.DefaultBasketService;
+import com.example.lana.products.service.NoDiscountsService;
+import com.example.lana.products.service.TwoForOneDiscountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

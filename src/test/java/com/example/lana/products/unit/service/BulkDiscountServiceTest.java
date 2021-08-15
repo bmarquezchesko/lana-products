@@ -1,6 +1,7 @@
-package com.example.lana.products.service.impl;
+package com.example.lana.products.unit.service;
 
 import com.example.lana.products.dto.Product;
+import com.example.lana.products.service.BulkDiscountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

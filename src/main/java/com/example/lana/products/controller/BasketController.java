@@ -3,6 +3,7 @@ package com.example.lana.products.controller;
 import com.example.lana.products.dto.Basket;
 import com.example.lana.products.dto.TotalDetail;
 import com.example.lana.products.request.AddProductRequest;
+import com.example.lana.products.response.BasketsResponse;
 import com.example.lana.products.service.BasketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
-@RequestMapping("/baskets")
+@RequestMapping("/lana-api/baskets")
 @Slf4j
 @RequiredArgsConstructor
 public class BasketController {
@@ -67,10 +67,11 @@ public class BasketController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Basket>> getAllBaskets(){
+    public ResponseEntity<BasketsResponse> getAllBaskets(){
         log.info("### GET request to obtain all baskets - Endpoint /basket/all was invoked ###");
 
-        List<Basket> response = basketService.getAll();
+        BasketsResponse response = new BasketsResponse()
+                .setBaskets(basketService.getAll());
 
         log.info("### Finish GET request to obtain all baskets {}} ###", response);
 

@@ -1,13 +1,12 @@
-package com.example.lana.products.service.impl;
+package com.example.lana.products.service;
 
 import com.example.lana.products.dto.Basket;
 import com.example.lana.products.dto.Product;
 import com.example.lana.products.dto.TotalDetail;
 import com.example.lana.products.exception.BasketNotFoundException;
 import com.example.lana.products.repository.BasketRepository;
-import com.example.lana.products.service.BasketService;
-import com.example.lana.products.service.DiscountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -71,7 +70,12 @@ public class DefaultBasketService implements BasketService {
 
     @Override
     public void removeBasket(Long basketId) {
-        basketRepository.deleteById(basketId);
+        try {
+            basketRepository.deleteById(basketId);
+        } catch (EmptyResultDataAccessException ex) {
+            throw new BasketNotFoundException(String.format("The basket with ID %d does not exist", basketId));
+
+        }
     }
 
     @Override

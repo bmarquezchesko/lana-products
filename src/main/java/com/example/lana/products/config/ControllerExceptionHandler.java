@@ -9,7 +9,6 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import javax.validation.UnexpectedTypeException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,22 +22,6 @@ public class ControllerExceptionHandler {
     public ResponseEntity<ApiError> basketNotFoundException(BasketNotFoundException ex) {
         log.warn(String.format("Exception %s was thrown with message: %s", ex.getClass(), ex.getMessage()));
         ApiError apiError = new ApiError("Basket Not Found Exception", ex.getMessage(), HttpStatus.NOT_FOUND.value());
-        return ResponseEntity.status(apiError.getStatus())
-                .body(apiError);
-    }
-
-    @ExceptionHandler(value = {UnexpectedTypeException.class})
-    public ResponseEntity<ApiError> unexpectedTypeException(UnexpectedTypeException ex) {
-        log.warn(String.format("Exception %s was thrown with message: %s", ex.getClass(), ex.getMessage()));
-        ApiError apiError = new ApiError("Missing Parameter Exception", ex.getMessage(), HttpStatus.BAD_REQUEST.value());
-        return ResponseEntity.status(apiError.getStatus())
-                .body(apiError);
-    }
-
-    @ExceptionHandler(value = {IllegalStateException.class})
-    public ResponseEntity<ApiError> illegalStateException(IllegalStateException ex) {
-        log.warn(String.format("Exception %s was thrown with message: %s", ex.getClass(), ex.getMessage()));
-        ApiError apiError = new ApiError("Missing Parameter Exception", ex.getMessage(), HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(apiError.getStatus())
                 .body(apiError);
     }
