@@ -270,7 +270,7 @@ public class BasketControllerTest {
                     .andExpect(jsonPath("$.message").value("Method Argument Not Valid"))
                     .andExpect(jsonPath("$.errors").isArray())
                     .andExpect(jsonPath("$.errors", hasSize(1)))
-                    .andExpect(jsonPath("$.errors[0]").value("Please provide a 'product' attribute in JSON request"))
+                    .andExpect(jsonPath("$.errors[0]").value("Please provide 'product' attribute in JSON request"))
                     .andExpect(jsonPath("$.status").value(HttpStatus.BAD_REQUEST.value()))
             ;
         }
@@ -289,7 +289,7 @@ public class BasketControllerTest {
                     .andExpect(jsonPath("$.message").value("Method Argument Not Valid"))
                     .andExpect(jsonPath("$.errors").isArray())
                     .andExpect(jsonPath("$.errors", hasSize(1)))
-                    .andExpect(jsonPath("$.errors[0]").value("Please provide a 'quantity' attribute in JSON request"))
+                    .andExpect(jsonPath("$.errors[0]").value("Please provide 'quantity' attribute in JSON request"))
                     .andExpect(jsonPath("$.status").value(HttpStatus.BAD_REQUEST.value()))
             ;
         }

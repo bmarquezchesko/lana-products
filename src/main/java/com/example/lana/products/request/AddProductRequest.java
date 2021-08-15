@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 public class AddProductRequest {
 
-    @NotNull(message = "Please provide a \'product\' attribute in JSON request")
+    @NotNull(message = "Please provide \'product\' attribute in JSON request")
     private Product product;
 
     @Min(value = 1, message = "quantity should be greater or equal to 1")
-    @NotNull(message = "Please provide a \'quantity\' attribute in JSON request")
+    @NotNull(message = "Please provide \'quantity\' attribute in JSON request")
     private Long quantity;
 }

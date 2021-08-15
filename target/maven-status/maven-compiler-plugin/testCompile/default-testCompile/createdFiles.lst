@@ -1,0 +1,8 @@
+com/example/lana/products/unit/service/TwoForOneDiscountServiceTest.class
+com/example/lana/products/integration/controller/BasketControllerTest$SuccessfulRequests.class
+com/example/lana/products/LanaProductsApplicationTests.class
+com/example/lana/products/unit/service/BulkDiscountServiceTest.class
+com/example/lana/products/integration/controller/BasketControllerTest.class
+com/example/lana/products/unit/service/NoDiscountsServiceTest.class
+com/example/lana/products/unit/service/DefaultBasketServiceTest.class
+com/example/lana/products/integration/controller/BasketControllerTest$UnsuccessfulRequests.class
