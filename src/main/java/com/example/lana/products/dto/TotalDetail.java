@@ -11,5 +11,5 @@ import java.util.List;
 @Accessors(chain = true)
 public class TotalDetail {
     List<Product> products;
-    Double total;
+    String total;
 }
