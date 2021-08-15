@@ -47,7 +47,7 @@ Password: password
 
 ## Database Diagram
 
-![Database Schema](https://github.com/bmarquezchesko/lana-products/blob/main/src/main/resources/files/DB%20LANA%20PRODUCTS.png)
+![Database Schema](https://github.com/bmarquezchesko/lana-products/blob/main/src/main/resources/files/DB%20Lana%20Products.png)
 
 ## API Usage
 
