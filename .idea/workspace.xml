@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/files/DB Lana Products.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/request/AddProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/request/AddProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/lana/products/integration/controller/BasketControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/integration/controller/BasketControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/config/ControllerExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/config/ControllerExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/request/AddProductRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/request/AddProductRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$UnsuccessfulRequests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$UnsuccessfulRequests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +174,7 @@
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
       <workItem from="1628512954614" duration="14413000" />
-      <workItem from="1628640633699" duration="65939000" />
+      <workItem from="1628640633699" duration="75583000" />
     </task>
     <servers />
   </component>

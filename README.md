@@ -25,12 +25,19 @@ You could access to some specific discounts like:
 ## Configure your project
 First, you must clone project from git-hub, then you should go to project root directory
 and execute next command in console `mvn clean install` to build project.
-After that, you could execute application with command `mvn spring-boot:run` and enjoy it ;)
 
+* Running in `LOCAL ENVIRONMENT`:
+You could execute application in local environment with command `mvn spring-boot:run` and enjoy it :smile:
 The application will execute in port `8080` from `localhost`.
 
+
+* Running in `DOCKER ENVIRONMENT`:
+In other hand, you can choose run application in docker environment with command `sudo docker build --tag=lana-products:1.0 .` 
+and then execute `sudo docker run -d -p 8090:8080 -t lana-products:1.0`.
+The application will execute in port `8090` from `localhost`.
+
 Once the application is running you could see Baskets store in a memory database (**H2**).
-To query elements in DB you could open navigator in `http://localhost:8080/h2-console` and login with credentials:
+To query elements in DB you could open navigator in `http://localhost:8080/h2-console` (In docker: port is `8090`) and login with credentials:
 ```
 User Name: sa 
 Password: password
