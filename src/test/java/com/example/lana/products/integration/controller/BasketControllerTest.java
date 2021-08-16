@@ -23,12 +23,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+import static com.example.lana.products.utils.MockUtils.*;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,6 +34,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = LanaProductsApplication.class)
 @AutoConfigureMockMvc
 public class BasketControllerTest {
+
+    private static final String ENDPOINT_LANA_API_BASKETS = "/lana-api/baskets";
+    private static final String ENDPOINT_LANA_API_BASKETS_BY_ID = "/lana-api/baskets/{id}";
+    private static final String ENDPOINT_LANA_API_BASKETS_TOTAL_DETAIL = "/lana-api/baskets/{basketId}/total_detail";
 
     @Autowired
     private MockMvc mockMvc;
@@ -56,13 +58,14 @@ public class BasketControllerTest {
     class SuccessfulRequests {
 
         @Test
+        @DisplayName("Creating basket should return status 200 and a new basket")
         void testCreateBasketSuccessfullyWithStatus200ReturnsNewBasket() throws Exception {
             Basket expectedBasket = new Basket().setId(1L);
 
-            doReturn(expectedBasket).when(basketRepository).save(any());
+            mockBasketRepositoryInSave(basketRepository, expectedBasket);
 
-            mockMvc.perform(post("/lana-api/baskets")
-                            .contentType("application/json"))
+            mockMvc.perform(post(ENDPOINT_LANA_API_BASKETS)
+                            .contentType(MediaType.APPLICATION_JSON_VALUE))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id").value(expectedBasket.getId()))
                     .andExpect(jsonPath("$.products").isArray())
@@ -71,6 +74,7 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding a product to empty basket should return status 200 and basket updated")
         void testAddProductToEmptyBasketReturnsSuccessfullyWithStatus200() throws Exception {
             Basket emptyBasket = new Basket().setId(1L);
             Basket expectedBasket = new Basket().setId(1L).setProducts(List.of(Product.PEN, Product.PEN, Product.PEN));
@@ -78,10 +82,10 @@ public class BasketControllerTest {
                     .setProduct(Product.PEN)
                     .setQuantity(3L);
 
-            doReturn(Optional.of(emptyBasket)).when(basketRepository).findById(any());
-            doReturn(expectedBasket).when(basketRepository).save(any());
+            mockBasketRepositoryInFindById(basketRepository, emptyBasket);
+            mockBasketRepositoryInSave(basketRepository, expectedBasket);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -96,6 +100,7 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding a product to basket with other product already created before should return status 200 and basket updated")
         void testAddProductToBasketWithOtherProductsReturnsSuccessfullyWithStatus200() throws Exception {
             Basket preexistingBasket = new Basket().setId(1L).setProducts(List.of(Product.MUG, Product.MUG));
             Basket expectedBasket = new Basket().setId(1L).setProducts(List.of(Product.MUG, Product.MUG, Product.TSHIRT));
@@ -103,10 +108,10 @@ public class BasketControllerTest {
                     .setProduct(Product.TSHIRT)
                     .setQuantity(1L);
 
-            doReturn(Optional.of(preexistingBasket)).when(basketRepository).findById(any());
-            doReturn(expectedBasket).when(basketRepository).save(any());
+            mockBasketRepositoryInFindById(basketRepository, preexistingBasket);
+            mockBasketRepositoryInSave(basketRepository, expectedBasket);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -121,15 +126,16 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Getting total detail should return status 200 with total detail")
         void testGetTotalDetailReturnsSuccessfullyWithStatus200() throws Exception {
             List<Product> expectedProducts = List.of(Product.PEN, Product.TSHIRT, Product.MUG);
-            Double expectedTotal = 32.50;
+            String expectedTotal = "32.50€";
 
             Basket basket = new Basket().setId(1L).setProducts(expectedProducts);
 
-            doReturn(Optional.of(basket)).when(basketRepository).findById(any());
+            mockBasketRepositoryInFindById(basketRepository, basket);
 
-            mockMvc.perform(get("/lana-api/baskets/{basketId}/total_detail", 1L)
+            mockMvc.perform(get(ENDPOINT_LANA_API_BASKETS_TOTAL_DETAIL, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8"))
                     .andExpect(status().isOk())
@@ -143,15 +149,16 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Getting total detail should return status 200 with total detail with bulk discounts")
         void testGetTotalDetailWithBulkDiscountReturnsSuccessfullyWithStatus200() throws Exception {
             List<Product> expectedProducts = List.of(Product.PEN, Product.TSHIRT, Product.TSHIRT, Product.TSHIRT, Product.TSHIRT);
-            Double expectedTotal = 65.00;
+            String expectedTotal = "65.00€";
 
             Basket basket = new Basket().setId(1L).setProducts(expectedProducts);
 
-            doReturn(Optional.of(basket)).when(basketRepository).findById(any());
+            mockBasketRepositoryInFindById(basketRepository, basket);
 
-            mockMvc.perform(get("/lana-api/baskets/{basketId}/total_detail", 1L)
+            mockMvc.perform(get(ENDPOINT_LANA_API_BASKETS_TOTAL_DETAIL, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8"))
                     .andExpect(status().isOk())
@@ -167,15 +174,16 @@ public class BasketControllerTest {
         }
 
         @Test
-        void testGetTotalDetailWith25PercentDiscountReturnsSuccessfullyWithStatus200() throws Exception {
-            List<Product> expectedProducts = List.of(Product.PEN, Product.TSHIRT, Product.MUG);
-            Double expectedTotal = 32.50;
+        @DisplayName("Getting total detail should return status 200 with total detail with 2x1 discount")
+        void testGetTotalDetailWith2x1DiscountReturnsSuccessfullyWithStatus200() throws Exception {
+            List<Product> expectedProducts = List.of(Product.PEN, Product.PEN, Product.MUG);
+            String expectedTotal = "12.50€";
 
             Basket basket = new Basket().setId(1L).setProducts(expectedProducts);
 
-            doReturn(Optional.of(basket)).when(basketRepository).findById(any());
+            mockBasketRepositoryInFindById(basketRepository, basket);
 
-            mockMvc.perform(get("/lana-api/baskets/{basketId}/total_detail", 1L)
+            mockMvc.perform(get(ENDPOINT_LANA_API_BASKETS_TOTAL_DETAIL, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8"))
                     .andExpect(status().isOk())
@@ -189,10 +197,11 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Deleting basket return status 200 with successful message")
         void testDeleteBasketReturnsSuccessfullyWithStatus200() throws Exception {
-            doNothing().when(basketRepository).deleteById(any());
+            mockBasketRepositoryInDeleteById(basketRepository);
 
-            mockMvc.perform(delete("/lana-api/baskets/{basketId}", 1L)
+            mockMvc.perform(delete(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8"))
                     .andExpect(status().isOk())
@@ -201,13 +210,14 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Getting all baskets return status 200 with baskets list")
         void testGetAllBasketsSuccessfullyWithStatus200ReturnsTwoBaskets() throws Exception {
             List<Basket> expectedBaskets = buildBasketResponse();
 
-            doReturn(expectedBaskets).when(basketRepository).findAll();
+            mockBasketRepositoryInFindAll(basketRepository, expectedBaskets);
 
-            mockMvc.perform(get("/lana-api/baskets")
-                            .contentType("application/json"))
+            mockMvc.perform(get(ENDPOINT_LANA_API_BASKETS)
+                            .contentType(MediaType.APPLICATION_JSON_VALUE))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.baskets").isArray())
                     .andExpect(jsonPath("$.baskets", hasSize(2)))
@@ -240,12 +250,13 @@ public class BasketControllerTest {
     @DisplayName("Unsuccessful Requests")
     class UnsuccessfulRequests {
         @Test
+        @DisplayName("Adding product should fail with status 404 by Basket Not Found")
         void testAddProductToNotExistingBasketShouldFailWithStatus404() throws Exception {
             AddProductRequest addProductRequest = new AddProductRequest()
                     .setProduct(Product.PEN)
                     .setQuantity(3L);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -257,12 +268,13 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding product should fail with status 400 by missing product attribute")
         void testAddNotValidProductShouldFailWithStatus400() throws Exception {
             AddProductRequest addProductRequest = new AddProductRequest()
                     .setProduct(null)
                     .setQuantity(2L);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -276,12 +288,13 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding product should fail with status 400 by missing quantity attribute")
         void testAddNotValidQuantityShouldFailWithStatus400() throws Exception {
             AddProductRequest addProductRequest = new AddProductRequest()
                     .setProduct(Product.PEN)
                     .setQuantity(null);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -295,12 +308,13 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding product should fail with status 400 by quantity in negative")
         void testAddNegativeQuantityShouldFailWithStatus400() throws Exception {
             AddProductRequest addProductRequest = new AddProductRequest()
                     .setProduct(Product.PEN)
                     .setQuantity(-5L);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(objectMapper.writeValueAsString(addProductRequest)))
@@ -314,10 +328,11 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Adding product should fail with status 422 by Product invalid")
         void testAddNotValidProductShouldFailWithStatus422() throws Exception {
             String bodyProductWrong = buildBodyToFail("PEPE", 2L);
 
-            mockMvc.perform(patch("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(patch(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8")
                             .content(bodyProductWrong))
@@ -332,10 +347,11 @@ public class BasketControllerTest {
         }
 
         @Test
+        @DisplayName("Deleting basket should fail with status 404 by Basket not found")
         void testDeleteNotExistingBasketShouldFailWithStatus404() throws Exception {
             Mockito.doThrow(EmptyResultDataAccessException.class).when(basketRepository).deleteById(any());
 
-            mockMvc.perform(delete("/lana-api/baskets/{id}", 1L)
+            mockMvc.perform(delete(ENDPOINT_LANA_API_BASKETS_BY_ID, 1L)
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .characterEncoding("utf-8"))
                     .andExpect(status().isNotFound())

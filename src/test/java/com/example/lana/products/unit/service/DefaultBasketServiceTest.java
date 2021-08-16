@@ -5,10 +5,7 @@ import com.example.lana.products.dto.Product;
 import com.example.lana.products.dto.TotalDetail;
 import com.example.lana.products.exception.BasketNotFoundException;
 import com.example.lana.products.repository.BasketRepository;
-import com.example.lana.products.service.BulkDiscountService;
-import com.example.lana.products.service.DefaultBasketService;
-import com.example.lana.products.service.NoDiscountsService;
-import com.example.lana.products.service.TwoForOneDiscountService;
+import com.example.lana.products.service.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +15,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
+import static com.example.lana.products.utils.MockUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -41,6 +38,9 @@ public class DefaultBasketServiceTest {
     @Mock
     private NoDiscountsService noDiscountsService;
 
+    @Mock
+    private CurrencyFormatterService currencyFormatterService;
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -51,7 +51,7 @@ public class DefaultBasketServiceTest {
     void testCreateBasket() {
         Basket expected = new Basket();
 
-        when(basketRepository.save(any())).thenReturn(expected);
+        mockBasketRepositoryInSave(basketRepository, expected);
 
         Basket response = basketService.createBasket();
 
@@ -70,8 +70,8 @@ public class DefaultBasketServiceTest {
         Product productToAdd = Product.PEN;
         Long quantity = 3L;
 
-        when(basketRepository.findById(any())).thenReturn(Optional.ofNullable(new Basket()));
-        when(basketRepository.save(any())).thenReturn(expected);
+        mockBasketRepositoryInFindById(basketRepository, new Basket());
+        mockBasketRepositoryInSave(basketRepository, expected);
 
         Basket response = basketService.addProduct(10L, productToAdd, quantity);
 
@@ -95,8 +95,8 @@ public class DefaultBasketServiceTest {
         Product productToAdd = Product.TSHIRT;
         Long quantity = 1L;
 
-        when(basketRepository.findById(any())).thenReturn(Optional.ofNullable(preexistingBasket));
-        when(basketRepository.save(any())).thenReturn(expected);
+        mockBasketRepositoryInFindById(basketRepository, preexistingBasket);
+        mockBasketRepositoryInSave(basketRepository, expected);
 
         Basket response = basketService.addProduct(10L, productToAdd, quantity);
 
@@ -113,7 +113,7 @@ public class DefaultBasketServiceTest {
         Product productToAdd = Product.PEN;
         Long quantity = 3L;
 
-        when(basketRepository.findById(any())).thenReturn(Optional.empty());
+        mockBasketRepositoryInFindById(basketRepository, null);
 
         Throwable ex = assertThrows(BasketNotFoundException.class, () -> basketService.addProduct(10L, productToAdd, quantity));
         assertEquals("The basket with ID 10 does not exist", ex.getMessage());
@@ -129,15 +129,16 @@ public class DefaultBasketServiceTest {
                 .setProducts(Arrays.asList(Product.MUG, Product.PEN, Product.TSHIRT));
         List<Product> expectedProducts = basket.getProducts();
 
-        when(basketRepository.findById(any())).thenReturn(Optional.ofNullable(basket));
-        when(bulkDiscountService.getSubtotalWithDiscount(any(), any())).thenReturn(20.00);
-        when(twoForOneDiscountService.getSubtotalWithDiscount(any(), any())).thenReturn(5.00);
-        when(noDiscountsService.getSubtotalWithDiscount(any(), any())).thenReturn(7.50);
+        mockBasketRepositoryInFindById(basketRepository, basket);
+        mockRetrieveDiscountService(bulkDiscountService, 20.00);
+        mockRetrieveDiscountService(twoForOneDiscountService, 5.00);
+        mockRetrieveDiscountService(noDiscountsService, 7.50);
+        mockCurrencyFormatterService(currencyFormatterService, "32.50€");
 
         TotalDetail response = basketService.getTotalDetail(10L);
 
         assertEquals(expectedProducts, response.getProducts());
-        assertEquals(32.50, response.getTotal());
+        assertEquals("32.50€", response.getTotal());
         verify(bulkDiscountService, times(1)).getSubtotalWithDiscount(any(), any());
         verify(twoForOneDiscountService, times(1)).getSubtotalWithDiscount(any(), any());
         verify(noDiscountsService, times(1)).getSubtotalWithDiscount(any(), any());
@@ -151,14 +152,15 @@ public class DefaultBasketServiceTest {
                 .setProducts(Arrays.asList(Product.MUG, Product.PEN, Product.PEN));
         List<Product> expectedProducts = basket.getProducts();
 
-        when(basketRepository.findById(any())).thenReturn(Optional.ofNullable(basket));
-        when(twoForOneDiscountService.getSubtotalWithDiscount(any(), any())).thenReturn(5.00);
-        when(noDiscountsService.getSubtotalWithDiscount(any(), any())).thenReturn(7.50);
+        mockBasketRepositoryInFindById(basketRepository, basket);
+        mockRetrieveDiscountService(twoForOneDiscountService, 5.00);
+        mockRetrieveDiscountService(noDiscountsService, 7.50);
+        mockCurrencyFormatterService(currencyFormatterService, "12.50€");
 
         TotalDetail response = basketService.getTotalDetail(10L);
 
         assertEquals(expectedProducts, response.getProducts());
-        assertEquals(12.50, response.getTotal());
+        assertEquals("12.50€", response.getTotal());
         verifyNoInteractions(bulkDiscountService);
         verify(twoForOneDiscountService, times(1)).getSubtotalWithDiscount(any(), any());
         verify(noDiscountsService, times(1)).getSubtotalWithDiscount(any(), any());
@@ -172,13 +174,14 @@ public class DefaultBasketServiceTest {
                 .setProducts(Arrays.asList(Product.MUG, Product.MUG, Product.MUG));
         List<Product> expectedProducts = basket.getProducts();
 
-        when(basketRepository.findById(any())).thenReturn(Optional.ofNullable(basket));
-        when(noDiscountsService.getSubtotalWithDiscount(any(), any())).thenReturn(22.5);
+        mockBasketRepositoryInFindById(basketRepository, basket);
+        mockRetrieveDiscountService(noDiscountsService, 22.50);
+        mockCurrencyFormatterService(currencyFormatterService, "22.50€");
 
         TotalDetail response = basketService.getTotalDetail(10L);
 
         assertEquals(expectedProducts, response.getProducts());
-        assertEquals(22.5, response.getTotal());
+        assertEquals("22.50€", response.getTotal());
         verifyNoInteractions(bulkDiscountService);
         verifyNoInteractions(twoForOneDiscountService);
         verify(noDiscountsService, times(1)).getSubtotalWithDiscount(any(), any());
@@ -187,9 +190,10 @@ public class DefaultBasketServiceTest {
     @Test
     @DisplayName("When get total detail to a non-existent basket then throws BasketNotFoundException")
     void testGetTotalDetailInNonExistentBasketThrowsBasketNotFoundException() {
-        when(basketRepository.findById(any())).thenReturn(Optional.empty());
+        mockBasketRepositoryInFindById(basketRepository, null);
 
         Throwable ex = assertThrows(BasketNotFoundException.class, () -> basketService.getTotalDetail(10L));
+
         assertEquals("The basket with ID 10 does not exist", ex.getMessage());
         verify(basketRepository, times(1)).findById(any());
         verifyNoInteractions(bulkDiscountService);
@@ -200,7 +204,7 @@ public class DefaultBasketServiceTest {
     @Test
     @DisplayName("When remove basket should execute deleteById")
     void testRemoveBasket() {
-        doNothing().when(basketRepository).deleteById(any());
+        mockBasketRepositoryInDeleteById(basketRepository);
 
         basketService.removeBasket(10L);
 
@@ -215,7 +219,7 @@ public class DefaultBasketServiceTest {
         Basket thirdBasket = new Basket().setId(3L).setProducts(Arrays.asList(Product.MUG, Product.PEN));
         List<Basket> expectedBaskets = Arrays.asList(firstBasket, secondBasket, thirdBasket);
 
-        when(basketRepository.findAll()).thenReturn(expectedBaskets);
+        mockBasketRepositoryInFindAll(basketRepository, expectedBaskets);
 
         List<Basket> response = basketService.getAll();
 

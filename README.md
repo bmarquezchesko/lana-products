@@ -13,7 +13,7 @@ TSHIRT       | Lana T-Shirt      |  20.00€
 MUG          | Lana Coffee Mug   |   7.50€
 ```
 
-With this fantastic API you will be able the following operations:
+With this fantastic API you will be able to do the following operations:
 - Create a new checkout basket
 - Add a product to a basket
 - Get the total amount in a basket
@@ -31,20 +31,20 @@ You could access to some specific discounts like:
 
 ## Configure your project
 First, you must clone project from git-hub, then you should go to project root directory
-and execute next command in console `mvn clean install` to build project.
+and execute next command in console to build project `mvn clean install`.
 
-* Running in `LOCAL ENVIRONMENT`:
+* **Running in Local Environment**:
 You could execute application in local environment with command `mvn spring-boot:run` and enjoy it :smile: .
 The application will execute in port `8080` from `localhost`.
 
 
-* Running in `DOCKER ENVIRONMENT`:
-On the other hand, you can choose run application in docker environment with command 
+* **Running in Docker Environment**:
+On the other hand, you can choose to run application in docker environment with command 
 `sudo docker build --tag=lana-products:1.0 .` and then execute `sudo docker run -d -p 8090:8080 -t lana-products:1.0`.
 The application will execute in port `8090` from `localhost`.
 
-Once the application is running you could see Baskets store in a memory database (**H2**).
-To query elements in DB you could open navigator in `http://localhost:8080/h2-console` (In docker: port is `8090`) and login with credentials:
+Once the application is running you could see Baskets stored in a memory database (**H2**).
+To query elements in DB you can open navigator in `http://localhost:8080/h2-console` (In docker: port is `8090`) and login with credentials:
 ```
 User Name: sa 
 Password: password
@@ -62,11 +62,11 @@ All the endpoints and request examples are in this public postman collection:
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/94a6d0085384dfadbc93)
 
-However, you could execute requests in console:
+####However, you could execute requests in console:
 
 ### Create a new Basket
 
-You are allowed to create new baskets executing next request:
+You are allowed to create a new basket executing next request:
 
 ```
 curl --request POST 'http://localhost:8080/lana-api/baskets'
@@ -83,7 +83,7 @@ curl --request POST 'http://localhost:8080/lana-api/baskets'
 
 ### Add product to Basket
 
-Also, it is possible to incorporate Products to a basket pre-existing indicating quantity that you want to add, only executing next request:
+Also, it is possible to incorporate Products to a pre-existing basket indicating quantity that you want to add, only executing next request:
 
 **IMPORTANT:**
 - Fields `"product"` and `"quantity"` are mandatory.
@@ -155,7 +155,7 @@ curl --request GET 'http://localhost:8080/lana-api/baskets/1/total_detail'
 ```
 
 ### DELETE a Basket by ID
-However, if you aren't happy with your basket, you could delete with the following request:
+However, if you aren't happy with your basket, you could delete it with the following request:
 ```
 curl --request DELETE 'http://localhost:8080/lana-api/baskets/1'
 ```
@@ -178,7 +178,7 @@ Basket deleted successfully!
 ```
 
 ### GET All Baskets
-Finally, you could request all basket already created.
+Finally, you could request all basket already created before.
 ```
 curl --request GET 'http://localhost:8080/lana-api/baskets'
 ```

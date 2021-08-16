@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96011a7c-4b49-4d25-982d-3b2870e72f04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/CurrencyFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/EuroCurrencyFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/EuroCurrencyFormatterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/unit/service/EuroCurrencyFormatterServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/utils/MockUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/TotalDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/dto/TotalDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/CurrencyFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/CurrencyFormatterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DefaultBasketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/DefaultBasketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/EuroCurrencyFormatter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/TwoForOneDiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lana/products/service/TwoForOneDiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/lana/products/integration/controller/BasketControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/integration/controller/BasketControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/lana/products/unit/service/DefaultBasketServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/lana/products/unit/service/DefaultBasketServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/DefaultBasketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/DefaultBasketService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/EuroCurrencyFormatter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/TwoForOneDiscountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lana/products/service/TwoForOneDiscountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$SuccessfulRequests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$SuccessfulRequests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$UnsuccessfulRequests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest$UnsuccessfulRequests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/integration/controller/BasketControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/unit/service/DefaultBasketServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/lana/products/unit/service/DefaultBasketServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +79,12 @@
       <recent name="$PROJECT_DIR$/src/main/resources/files" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.lana.products.service" />
       <recent name="com.example.lana.products.controller" />
       <recent name="com.example.lana.products.service.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LanaProductsApplication (1)">
+  <component name="RunManager" selected="JUnit.All in lana-products">
     <configuration name="All in lana-products" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lana-products" />
       <option name="PACKAGE_NAME" value="" />
@@ -79,65 +93,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasketControllerTest$UnsuccessfulRequests.testAddNotValidProductShouldFailWithStatus422" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BasketControllerTest$SuccessfulRequests.testGetTotalDetailWith2x1DiscountReturnsSuccessfullyWithStatus200" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lana-products" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.lana.products.controller.*" />
+          <option name="PATTERN" value="com.example.lana.products.integration.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.lana.products.controller.BasketControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.controller.BasketControllerTest$UnsuccessfulRequests" />
-      <option name="METHOD_NAME" value="testAddNotValidProductShouldFailWithStatus422" />
+      <option name="PACKAGE_NAME" value="com.example.lana.products.integration.controller.BasketControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.integration.controller.BasketControllerTest$SuccessfulRequests" />
+      <option name="METHOD_NAME" value="testGetTotalDetailWith2x1DiscountReturnsSuccessfullyWithStatus200" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasketControllerTest$UnsuccessfulRequests.testAddQuantityWithoutProductShouldFailWithStatus422" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EuroCurrencyFormatterServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lana-products" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.lana.products.controller.*" />
+          <option name="PATTERN" value="com.example.lana.products.unit.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.lana.products.controller.BasketControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.controller.BasketControllerTest$UnsuccessfulRequests" />
-      <option name="METHOD_NAME" value="testAddQuantityWithoutProductShouldFailWithStatus422" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BasketControllerTest$UnsuccessfulRequests.testDeleteNotExistingBasketShouldFailWithStatus404" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lana-products" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.lana.products.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.lana.products.controller.BasketControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.controller.BasketControllerTest$UnsuccessfulRequests" />
-      <option name="METHOD_NAME" value="testDeleteNotExistingBasketShouldFailWithStatus404" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BasketControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lana-products" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.lana.products.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.lana.products.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.controller.BasketControllerTest" />
+      <option name="PACKAGE_NAME" value="com.example.lana.products.unit.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.unit.service.EuroCurrencyFormatterServiceTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EuroCurrencyFormatterServiceTest.testParseDoubleInThousandsToStringWithCommaSeparatorsAndTwoDecimalsAndCurrencySymbol" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.unit.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.unit.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.unit.service.EuroCurrencyFormatterServiceTest" />
+      <option name="METHOD_NAME" value="testParseDoubleInThousandsToStringWithCommaSeparatorsAndTwoDecimalsAndCurrencySymbol" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EuroCurrencyFormatterServiceTest.testParseDoubleWithZerosToStringWithoutZerosAndTwoDecimalsAndCurrencySymbol" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lana-products" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lana.products.unit.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lana.products.unit.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lana.products.unit.service.EuroCurrencyFormatterServiceTest" />
+      <option name="METHOD_NAME" value="testParseDoubleWithZerosToStringWithoutZerosAndTwoDecimalsAndCurrencySymbol" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in lana-products" />
-        <item itemvalue="JUnit.BasketControllerTest" />
-        <item itemvalue="JUnit.BasketControllerTest$UnsuccessfulRequests.testDeleteNotExistingBasketShouldFailWithStatus404" />
-        <item itemvalue="JUnit.BasketControllerTest$UnsuccessfulRequests.testAddQuantityWithoutProductShouldFailWithStatus422" />
-        <item itemvalue="JUnit.BasketControllerTest$UnsuccessfulRequests.testAddNotValidProductShouldFailWithStatus422" />
+        <item itemvalue="JUnit.BasketControllerTest$SuccessfulRequests.testGetTotalDetailWith2x1DiscountReturnsSuccessfullyWithStatus200" />
+        <item itemvalue="JUnit.EuroCurrencyFormatterServiceTest" />
+        <item itemvalue="JUnit.EuroCurrencyFormatterServiceTest.testParseDoubleWithZerosToStringWithoutZerosAndTwoDecimalsAndCurrencySymbol" />
+        <item itemvalue="JUnit.EuroCurrencyFormatterServiceTest.testParseDoubleInThousandsToStringWithCommaSeparatorsAndTwoDecimalsAndCurrencySymbol" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +190,7 @@
       <updated>1628476404205</updated>
       <workItem from="1628476405682" duration="5582000" />
       <workItem from="1628512954614" duration="14413000" />
-      <workItem from="1628640633699" duration="81252000" />
+      <workItem from="1628640633699" duration="93329000" />
     </task>
     <servers />
   </component>
@@ -206,6 +220,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lana_products$All_in_lana_products.ic" NAME="All in lana-products Coverage Results" MODIFIED="1628998810151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/lana_products$All_in_lana_products.ic" NAME="All in lana-products Coverage Results" MODIFIED="1629084681187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

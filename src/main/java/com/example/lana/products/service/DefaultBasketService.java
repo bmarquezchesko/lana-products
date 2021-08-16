@@ -22,7 +22,7 @@ public class DefaultBasketService implements BasketService {
     private final BulkDiscountService bulkDiscountService;
     private final TwoForOneDiscountService twoForOneDiscountService;
     private final NoDiscountsService noDiscountsService;
-    private final EuroCurrencyFormatter euroCurrencyFormatter;
+    private final CurrencyFormatterService currencyFormatterService;
 
     @Override
     public Basket createBasket() {
@@ -76,7 +76,7 @@ public class DefaultBasketService implements BasketService {
 
         TotalDetail totalDetail = new TotalDetail()
                 .setProducts(products)
-                .setTotal(euroCurrencyFormatter.parse(totalWithDiscount));
+                .setTotal(currencyFormatterService.parse(totalWithDiscount));
 
         log.debug("Total detail by Basket ID {} was created: {} ", basketId, totalDetail);
 

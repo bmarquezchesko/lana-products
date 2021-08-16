@@ -14,6 +14,7 @@ public class TwoForOneDiscountService implements DiscountService {
                 .filter(p -> p.equals(productToApplyDiscount))
                 .count();
 
+        //Obtain freeUnits quantity by entire division
         Long freeUnitsQuantity = productOccurrences / 2;
 
         return productToApplyDiscount.getPrice()
