@@ -16,7 +16,7 @@ public class EuroCurrencyFormatterService implements CurrencyFormatterService {
         formatSymbols.setGroupingSeparator(',');
         formatSymbols.setDecimalSeparator('.');
         //Decimal Format is created to add only 2 decimals, indicate currency symbol and pass format symbols
-        DecimalFormat df = new DecimalFormat("###,###.00€", formatSymbols);
+        DecimalFormat df = new DecimalFormat("###,##0.00€", formatSymbols);
 
         return df.format(total);
     }
